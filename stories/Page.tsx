@@ -3,8 +3,12 @@ import React from 'react';
 import { Header } from './Header';
 import './page.css';
 
-export const Page = () => {
-  const [user, setUser] = React.useState();
+type User = {
+  name: string;
+};
+
+export const Page: React.FC = () => {
+  const [user, setUser] = React.useState<User>();
 
   return (
     <article>
@@ -41,7 +45,7 @@ export const Page = () => {
         </ul>
         <p>
           Get a guided tutorial on component-driven development at{' '}
-          <a href="https://storybook.js.org/tutorials/" target="_blank" rel="noopener noreferrer">
+          <a href="renderers/react/template/cli/ts/Page" target="_blank" rel="noopener noreferrer">
             Storybook tutorials
           </a>
           . Read more in the{' '}

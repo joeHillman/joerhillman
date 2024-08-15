@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { Button } from './Button';
+
+import Button from '../development/components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
-  title: 'Example/Button',
+const meta: Meta<typeof Button> = {
+  title: 'Button',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -19,30 +21,39 @@ export default {
   args: { onClick: fn() },
 };
 
+export default meta;
+type Story = StoryObj<typeof Button>;
+
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    primary: true,
-    label: 'Button',
+    classes: 'customClass',
+    disabled: false,
+    label: 'Click',
+    onClick: () => {},
+    primaryStyle: true,
+    submitButton: false,
   },
 };
 
-export const Secondary = {
+export const Secondary: Story = {
   args: {
-    label: 'Button',
+    classes: 'customClass',
+    disabled: false,
+    label: 'Click',
+    onClick: () => {},
+    primaryStyle: false,
+    submitButton: false,
   },
 };
 
-export const Large = {
+export const Disabled: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small = {
-  args: {
-    size: 'small',
-    label: 'Button',
+    classes: 'customClass',
+    disabled: true,
+    label: 'Click',
+    onClick: () => {},
+    primaryStyle: false,
+    submitButton: false,
   },
 };
