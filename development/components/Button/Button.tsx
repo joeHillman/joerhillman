@@ -2,10 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import {bool, func, string} from "prop-types";
 import { ButtonInterface } from "./Button.interface";
-import './Button.scss';
 
 const Button = ({ classes, disabled, label, onClick, primaryStyle, submitButton }: ButtonInterface) => {
-  let buttonClasses: string[] = ["pure-button"];
+  let buttonClasses: string[] = ["button"];
   let buttonType: "button" | "submit" | "reset" | undefined;
 
   if( !submitButton ) {
@@ -15,7 +14,7 @@ const Button = ({ classes, disabled, label, onClick, primaryStyle, submitButton 
   }
 
   if( primaryStyle ) {
-    buttonClasses.push("pure-button-primary")
+    buttonClasses.push("button-primary")
   }
 
   return (

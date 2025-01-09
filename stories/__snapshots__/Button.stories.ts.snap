@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Disabled smoke-test 1`] = `
+<button class="pure-button customClass"
+        type="button"
+        disabled
+>
+  Click
+</button>
+`;
+
+exports[`Button Primary smoke-test 1`] = `
+<button class="pure-button pure-button-primary customClass"
+        type="button"
+>
+  Click
+</button>
+`;
+
+exports[`Button Secondary smoke-test 1`] = `
+<button class="pure-button customClass"
+        type="button"
+>
+  Click
+</button>
+`;
