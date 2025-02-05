@@ -1,12 +1,13 @@
-import React, { setState, Component } from "react";
+import React, { useState, Component } from "react";
 import PropTypes, { func, string } from "prop-types";
 import Button from "../Button/Button";
 import ReactPortal from "./ReactPortal";
-import {ModalPortal} from "./Modal.interface";
+import { ModalPortal } from "./Modal.interface";
+import { ButtonInterface } from "../Button/Button.interface";
 
 const ModalPortal = (props: ModalPortal) => {
   const [modalIsOpen, toggleOpenModal] = useState(false);
-  const [isLastModalStep, toggleLastModalStep] = useState(false;)
+  const [isLastModalStep, toggleLastModalStep] = useState(false);
 
   const toggleOpen = () => {
     toggleOpenModal(!modalIsOpen)
@@ -44,7 +45,7 @@ const ModalPortal = (props: ModalPortal) => {
 
   return (
     <div>
-      <Button primaryStyle label={openLabel} onClick={this.toggleOpen}/>
+      <Button primaryStyle label={openLabel} onClick={toggleOpen}/>
       {modalIsOpen === true ? <ReactPortal>{modalContent()}</ReactPortal> : null}
     </div>
   );

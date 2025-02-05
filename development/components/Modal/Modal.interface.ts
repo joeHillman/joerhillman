@@ -1,14 +1,16 @@
 import { DOMElement } from "react";
 
+// handler functions will all return void
+// // they don't return a value they just run another function or update state
 export interface ModalInterface {
   bodyString: string;
   cancelString: string;
   children: React.ReactNode;
-  confirmModal: () => {};
+  confirmModal: () => void;
   confirmString: string;
-  handleBackDrop: () => {};
-  handleCancel: () => {};
-  handleOpen: () => {};
+  handleBackDrop: () => void;
+  handleCancel: () => void;
+  handleOpen: () => void;
   heading: string;
   modalClasses: String[];
   onlyNotify: boolean;
@@ -18,14 +20,15 @@ export interface ModalInterface {
 }
 
 export interface ReactPortal {
-  AppRoot: NodeList;
   children: React.ReactNode;
 }
 
 export interface ModalPortal {
   bodyString: string;
   children: React.ReactNode;
-  confirmModal: () => {};
+  confirmModal: () => void;
   heading: string;
+  lastModalStep: () => void;
   openLabel: string;
+  toggleOpen: () => void;
 }

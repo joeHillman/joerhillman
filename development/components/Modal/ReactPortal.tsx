@@ -1,8 +1,8 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom";
 import { ReactPortal } from "./Modal.interface";
 
-const AppRoot: Element | DocumentFragment | null = document.getElementById("root");
+const AppRoot = document.getElementById("root") as HTMLElement;
 
 const ReactPortal = (props: ReactPortal) => {
   return (
