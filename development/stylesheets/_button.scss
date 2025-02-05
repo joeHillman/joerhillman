@@ -1,0 +1,7 @@
+.pure-button {
+  &:focus,
+  &:hover,
+  &:focus-visible {
+    outline: #000 auto 2px;
+  }
+}

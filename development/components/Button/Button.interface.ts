@@ -1,8 +1,9 @@
 export interface ButtonInterface {
-  classes: string;
-  disabled: boolean;
+  ariaLabel?: string;
+  classes?: string;
+  disabled?: boolean;
   label: string;
-  onClick: () => {};
-  primaryStyle: boolean
-  submitButton: boolean;
+  onClick?: () => void;
+  primaryStyle?: boolean
+  submitButton?: boolean;
 }

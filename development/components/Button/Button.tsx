@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {bool, func, string} from "prop-types";
 import { ButtonInterface } from "./Button.interface";
 
-const Button = ({ classes, disabled, label, onClick, primaryStyle, submitButton }: ButtonInterface) => {
+const Button = ({ ariaLabel, classes, disabled, label, onClick, primaryStyle, submitButton }: ButtonInterface) => {
   let buttonClasses: string[] = ["button"];
   let buttonType: "button" | "submit" | "reset" | undefined;
 
@@ -18,11 +18,21 @@ const Button = ({ classes, disabled, label, onClick, primaryStyle, submitButton 
   }
 
   return (
-    <button className={classNames([buttonClasses, classes])} type={buttonType} onClick={onClick} disabled={disabled}>{label}</button>
+    <button
+      aria-label={ariaLabel || label}
+      className={classNames([buttonClasses, classes])}
+      disabled={disabled}
+      onClick={onClick}
+      type={buttonType}
+    >
+      {label}
+    </button>
   );
 }
 
 Button.propTypes = {
+  // ariaLabel as option if label is not descriptive enough for AT
+  ariaLabel: string,
   classes: string,
   disabled: bool,
   label: string.isRequired,
