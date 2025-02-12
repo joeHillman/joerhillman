@@ -1,11 +1,10 @@
 import React, { useState, Component } from "react";
-import PropTypes, { func, string } from "prop-types";
+import { func, string } from "prop-types";
 import Button from "../Button/Button";
 import ReactPortal from "./ReactPortal";
-import { ModalPortal } from "./Modal.interface";
-import { ButtonInterface } from "../Button/Button.interface";
+import { ModalPortal as ModalPortalProps } from "./Modal.interface";
 
-const ModalPortal = (props: ModalPortal) => {
+const ModalPortal = (props: ModalPortalProps) => {
   const [modalIsOpen, toggleOpenModal] = useState(false);
   const [isLastModalStep, toggleLastModalStep] = useState(false);
 
@@ -18,20 +17,20 @@ const ModalPortal = (props: ModalPortal) => {
     toggleOpen();
   }
 
-  let { bodyString, children, heading, openLabel } = props;
+  const { bodyString, children, heading, openLabel, modalLabelledBy, modalDescribedBy } = props;
 
   const modalContent = () => {
     return (
       <div className="c-modal__container">
         <div className="c-modal__backdrop" onClick={toggleOpen}></div>
-        <div className="c-modal__content">
+        <div className="c-modal__content" role="alertdialog" aria-modal="true" aria-labelledby={modalLabelledBy} aria-describedby={modalDescribedBy}>
           {heading ?
             <div className="c-modal__title">
-              <h3 className="c-modal__heading">{heading}</h3>
+              <h3 className="c-modal__heading" id={modalLabelledBy}>{heading}</h3>
             </div>
             : null
           }
-          <p className="c-modal__body">
+          <p className="c-modal__body" id={modalDescribedBy}>
             {bodyString ? bodyString : children}
           </p>
           <div className="c-modal__buttons">
@@ -51,14 +50,13 @@ const ModalPortal = (props: ModalPortal) => {
   );
 }
 
-
-
-
 ModalPortal.propTypes = {
   bodyString: string,
   confirmModal: func,
   heading: string,
-  openLabel: string
+  openLabel: string,
+  modalLabelledBy: string,
+  modalDescribedBy: string,
 }
 
 export default ModalPortal;

@@ -13,6 +13,8 @@ export interface ModalInterface {
   handleOpen: () => void;
   heading: string;
   modalClasses: String[];
+  modalDescribedBy: string;
+  modalLabelledBy: string;
   onlyNotify: boolean;
   openLabel: string;
   openWithScript: boolean;
@@ -29,6 +31,8 @@ export interface ModalPortal {
   confirmModal: () => void;
   heading: string;
   lastModalStep: () => void;
+  modalDescribedBy: string;
+  modalLabelledBy: string;
   openLabel: string;
   toggleOpen: () => void;
 }

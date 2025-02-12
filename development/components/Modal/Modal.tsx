@@ -43,25 +43,39 @@ const Modal = (props: ModalInterface) => {
       toggleOpen()
     }
   }, [props.openWithScript])
-  
+
+  const {
+    bodyString,
+    cancelString,
+    children,
+    confirmString,
+    heading,
+    openLabel,
+    modalClasses,
+    modalDescribedBy,
+    modalLabelledBy, 
+    onlyNotify,
+    useOpenScript
+  } = props;
+
   const modalContent = () => {
     return (
       <div className="c-modal__container">
         <div className="c-modal__backdrop" onClick={handleBackDrop}></div>
-        <div className="c-modal__content">
-          {props.heading ?
+        <div className="c-modal__content" aria-modal="true" aria-labelledby={modalLabelledBy} aria-describedby={modalDescribedBy}>
+          {heading ?
             <div className="c-modal__title">
-              <h3 className="c-modal__heading">{props.heading}</h3>
+              <h3 className="c-modal__heading" id={modalLabelledBy}>{heading}</h3>
             </div>
             : null
           }
-          <p className="c-modal__body">
-            {props.bodyString ? props.bodyString : props.children}
+          <p className="c-modal__body" id={modalDescribedBy}>
+            {bodyString ? bodyString : children}
           </p>
           <div className="c-modal__buttons">
-            <Button label={props.cancelString || "Cancel"} onClick={handleCancel}/>
-            {!props.onlyNotify ?
-              <Button primaryStyle label={props.confirmString || "Confirm"} onClick={lastModalStep}/>
+            <Button label={cancelString || "Cancel"} onClick={handleCancel}/>
+            {!onlyNotify ?
+              <Button primaryStyle label={confirmString || "Confirm"} onClick={lastModalStep}/>
               : null
             }
           </div>
@@ -71,8 +85,8 @@ const Modal = (props: ModalInterface) => {
   };
 
   return (
-    <div className={`c-modal ${props.useOpenScript ? "c-modal--use-script" : ""} ${props.modalClasses}`}>
-      <Button primaryStyle classes="open-modal" label={props.openLabel} onClick={handleOpen}/>
+    <div className={`c-modal ${useOpenScript ? "c-modal--use-script" : ""} ${modalClasses}`}>
+      <Button primaryStyle classes="open-modal" label={openLabel} onClick={handleOpen}/>
       {modalIsOpen === true ? modalContent() : null}
     </div>
   )
@@ -86,6 +100,8 @@ Modal.propTypes = {
   handleBackDrop: func,
   handleCancel: func,
   heading: string,
+  modalDescribedBy: string,
+  modalLabelledBy: string,
   modalClasses: string,
   onlyNotify: bool,
   openLabel: string,
